@@ -2,7 +2,7 @@
 
 Powerful module for prestashop that allows you to accept payments for your high risk business instantly. You can accept Credit/debit card (including MasterCard, Visa, and Maestro) – Apple Pay – Google Pay – SEPA or local bank transfer. Get paid instantly to your USDC Polygon wallet.
 
-This module integrates the RiskPay payment gateway with PrestaShop. It is compatible with both PrestaShop 1.6 and 1.7.
+This module integrates the RiskPay payment gateway with PrestaShop. It is compatible with all PrestaShop versions from prestashop 1.6 to prestashop 9.
 
 ## Features
 - Handles RiskPay payment callbacks
@@ -20,6 +20,8 @@ This module integrates the RiskPay payment gateway with PrestaShop. It is compat
 ## Compatibility
 - PrestaShop 1.6.x
 - PrestaShop 1.7.x
+- PrestaShop 8.x.x
+- PrestaShop 9.x.x
 
 ## Support
 For issues or feature requests, please contact the module author or open an issue in the repository.

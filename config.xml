@@ -2,7 +2,7 @@
 <module>
 	<name>riskpay</name>
 	<displayName><![CDATA[RiskPay]]></displayName>
-	<version><![CDATA[1.0.0]]></version>
+	<version><![CDATA[1.1.0]]></version>
 	<description><![CDATA[Accept payments with RiskPay.]]></description>
 	<author><![CDATA[Taoufiq Ait Ali]]></author>
 	<tab><![CDATA[payments_gateways]]></tab>
