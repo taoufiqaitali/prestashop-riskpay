@@ -1,0 +1,32 @@
+{
+  "name": "taoufiqaitali/prestashop-riskpay",
+  "description": "RiskPay payment module for PrestaShop.",
+  "version": "1.1.0",
+  "type": "prestashop-module",
+  "homepage": "https://github.com/taoufiqaitali/prestashop-riskpay",
+  "license": "AFL-3.0",
+  "authors": [
+    {
+      "name": "Taoufiq Ait ali",
+      "email": "tsdi.23a@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4"
+  },
+  "autoload": {
+    "classmap": [
+      "riskpay.php"
+    ],
+    "exclude-from-classmap": []
+  },
+  "config": {
+    "preferred-install": "dist",
+    "classmap-authoritative": true,
+    "optimize-autoloader": true,
+    "prepend-autoloader": false,
+    "platform": {
+      "php": "5.4"
+    }
+  }
+}
