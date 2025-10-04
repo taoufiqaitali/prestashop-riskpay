@@ -27,7 +27,7 @@
 	<div class="col-xs-12">
 		<p class="payment_module">
 			<a class="riskpay" href="{$link->getModuleLink('riskpay', 'payment')}" title="{l s='Pay via credit card' mod='riskpay'}" style="padding-left: 20px;">
-                <img src="{$this_path_riskpay}logo.png" alt="{l s='Pay via credit card' mod='riskpay'}" height="49" style="margin-right: 10px;"/>
+                <img src="{$this_path_riskpay}logo.png" alt="{l s='Pay via credit card' mod='riskpay'}" height="49" />
 				{$path}{l s='Pay via credit card' mod='riskpay'}
 			</a>
 		</p>
@@ -51,5 +51,9 @@
       height: 22px;
       width: 14px;
       color: #777;
+    }
+    p.payment_module a.riskpay img {
+        margin-right: 10px;
+        max-height: 49px;
     }
 </style>

@@ -72,9 +72,14 @@ class RiskpayPaymentModuleFrontController extends ModuleFrontController
         $encrypted_wallet = $wallet_data['address_in'];
 
         // Step 2: Redirect to payment page
-        $payment_url = 'https://checkout.riskpay.biz/process-payment.php?address=' . $encrypted_wallet . '&provider=' . $provider . '&amount=' .(float)$total . '&' . 
+        if ($provider !== 'gateway') {
+            $payment_url = 'https://pay.riskpay.biz/payment-processing.php?address=';
+        } else {
+            $payment_url = 'https://pay.riskpay.biz/payment-creating.php?address=';
+        }
+        $payment_url = $payment_url . $encrypted_wallet . '&provider=' . $provider . '&amount=' .(float)$total . '&' . 
         http_build_query(array(
-            'currency' => 'EUR', //'$currency->iso_code',@todo:to remove
+            'currency' => $currency->iso_code,
             'email' => $customer->email
         ));
         PrestaShopLogger::addLog($payment_url, 1, null, null, null, true);

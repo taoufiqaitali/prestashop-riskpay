@@ -1,7 +1,7 @@
 {
   "name": "taoufiqaitali/prestashop-riskpay",
   "description": "RiskPay payment module for PrestaShop.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "prestashop-module",
   "homepage": "https://github.com/taoufiqaitali/prestashop-riskpay",
   "license": "AFL-3.0",

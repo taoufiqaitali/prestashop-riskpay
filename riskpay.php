@@ -34,7 +34,7 @@ class RiskPay extends PaymentModule
 	{
 		$this->name = 'riskpay';
 		$this->tab = 'payments_gateways';
-		$this->version = '1.1.0';
+		$this->version = '1.2.0';
 		$this->author = 'Taoufiq Ait Ali';
 		$this->controllers = array('payment', 'validation');
 		$this->currencies = true;
@@ -86,13 +86,14 @@ class RiskPay extends PaymentModule
 						array(
 							'type' => 'select',
 							'label' => $this->l('Provider'),
+							'desc' => $this->l('Select your payment provider. gateway is all in one solution.'), 
 							'name' => 'RISKPAY_PROVIDER',
 							'required' => true,
 							'options' => array(
 								'query' => array_map(function($provider) {
 									return array('id' => $provider, 'name' => $provider);
 								}, array(
-									'alchemypay', 'banxa', 'bitnovo', 'changenow', 'coinbase', 'finchpay', 'guardarian',
+									'gateway', 'alchemypay', 'banxa', 'bitnovo', 'changenow', 'coinbase', 'finchpay', 'guardarian',
 									'interac', 'kado', 'mercuryo', 'moonpay', 'particle', 'rampnetwork', 'revolut',
 									'robinhood', 'sardine', 'simpleswap', 'simplex', 'stripe', 'swipelux', 'topper',
 									'transak', 'transfi', 'unlimit', 'upi', 'utorg', 'wert'
