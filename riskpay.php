@@ -21,7 +21,7 @@ class RiskPay extends PaymentModule
 		$this->displayName = $this->l('RiskPay');
 		$this->description = $this->l('Accept payments with RiskPay.');
 		$this->confirmUninstall = $this->l('Are you sure you want to uninstall RiskPay?');
-		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6.99.99');
+		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
 	}
 
 	public function getContent()
@@ -114,7 +114,7 @@ class RiskPay extends PaymentModule
         
 
         Configuration::updateValue('RISKPAY_PENDING', $OrderPending->id);
-		return parent::install() && $this->registerHook('payment') && $this->registerHook('paymentReturn');
+		return parent::install() && $this->registerHook('payment') && $this->registerHook('paymentReturn') && $this->registerHook('paymentOptions');
 	}
 
 	public function uninstall()
@@ -122,6 +122,7 @@ class RiskPay extends PaymentModule
 		return parent::uninstall();
 	}
 
+	// PrestaShop 1.6 payment hook
 	public function hookPayment($params)
 	{
 		if (!$this->active) {
@@ -138,6 +139,28 @@ class RiskPay extends PaymentModule
 			'this_path_ssl' => Tools::getShopDomainSsl(true, true).__PS_BASE_URI__.'modules/'.$this->name.'/'
 		));
 		return $this->display(__FILE__, 'views/templates/hook/payment.tpl');
+	}
+
+	// PrestaShop 1.7+ paymentOptions hook
+	public function hookPaymentOptions($params)
+	{
+		if (!$this->active) {
+			return [];
+		}
+	
+		$wallet = Configuration::get('RISKPAY_USDC_WALLET');
+		$provider = Configuration::get('RISKPAY_PROVIDER');
+		if (empty($wallet) || empty($provider)) {
+			return [];
+		}
+		$payment_options = [];
+
+		$option = new \PrestaShop\PrestaShop\Core\Payment\PaymentOption();
+		$option->setCallToActionText($this->l('Pay by Credit Card'));
+		//$option->setLogo(Media::getMediaPath(_PS_MODULE_DIR_.$this->name.'/logo.png'));
+		$option->setAction($this->context->link->getModuleLink($this->name, 'payment', array(), true));
+		$payment_options[] = $option;
+		return $payment_options;
 	}
 
 	public function hookPaymentReturn($params)
